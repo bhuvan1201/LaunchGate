@@ -18,3 +18,8 @@ data/
 artifacts/runs/
 *.log
 .DS_Store
+
+launch/
+
+# Private local submission audit
+docs/SUBMISSION_REVIEW.md

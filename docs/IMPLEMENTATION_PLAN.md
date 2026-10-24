@@ -1,6 +1,8 @@
 # LaunchGate implementation plan
 
-Status: working local MVP. The pricing engine, campaign persistence, real OpenAI interpretation, Kane runner, and backend activation gate are implemented. Kane's PRD use cases and six checkout scenarios were reviewed; the general suite passed four of six. A separate, reviewed read-only candidate suite passed six of six for Welcome 20, and the gate allowed activation only for that exact policy and evidence. See [DEMO_SCRIPT.md](DEMO_SCRIPT.md) for the current run reports, demonstrated repair, and remaining coverage gaps.
+Status update: revision-specific Kane generation and human review are now implemented in the app; see README.md for the current flow. The historical fixed-suite results below predate this change and do not establish coverage of the new workflow.
+
+Previous milestone: working local MVP. The pricing engine, campaign persistence, real OpenAI interpretation, Kane runner, and backend activation gate are implemented. Kane's PRD use cases and six checkout scenarios were reviewed; the general suite passed four of six. A separate, reviewed read-only candidate suite passed six of six for Welcome 20, and the gate allowed activation only for that exact policy and evidence. See [DEMO_SCRIPT.md](DEMO_SCRIPT.md) for the current run reports, demonstrated repair, and remaining coverage gaps.
 
 ## Outcome
 
@@ -147,3 +149,7 @@ Keep OpenAI interpretation, merchant confirmation, real checkout, genuine Kane e
 ## Next deliverable
 
 Keep the passing demo state stable for the mentor review. Then extend Kane coverage of activation and revision guardrails, demonstrate Maintain on a requirement change if time permits, rehearse the three-minute script, and prepare the submission bundle. The local OpenAI key is present only in ignored `.env`; never copy it into a report or commit. This plan does not itself authorize publishing a site or creating a public deployment.
+
+## Finalized presentation approach
+
+Keep dynamic merchant inputs. Prepare and review a full suite before judging, show the completed evidence with its revision and timestamp, demonstrate the real checkout, and optionally replay one rehearsed test. The frontend has an explicit presentation view for the confirmed offer and live checkout, with evidence, activation controls and an expandable preparation section retained in the editing workspace. Neither view fabricates or imports verification. Independent CLI runs use an exported requirements workspace and Kane's evidence viewer; app-managed verification remains required for activation. App-triggered Kane execution is paused during this UI work. See `docs/KANE_OPERATOR_GUIDE.md` for the operator commands and remaining full-app coverage limits.
