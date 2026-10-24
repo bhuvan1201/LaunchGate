@@ -23,6 +23,10 @@ export const cartSchema = z.object({
 }).strict();
 export type Cart = z.infer<typeof cartSchema>;
 
+export function calculateDiscountCents(eligibleSubtotalCents: number, percentOff: number, maximumDiscountCents: number) {
+  return Math.min(Math.floor((eligibleSubtotalCents * percentOff + 50) / 100), maximumDiscountCents, eligibleSubtotalCents);
+}
+
 export function quote(cartInput: unknown, policyInput?: unknown) {
   const cart = cartSchema.parse(cartInput);
   const ids = new Set(catalog.map(item => item.id));
@@ -36,7 +40,7 @@ export function quote(cartInput: unknown, policyInput?: unknown) {
     if (policy.newCustomersOnly && cart.customerType !== 'new') reason = 'Returning customers are not eligible';
     else if (eligibleSubtotalCents < policy.minimumEligibleCents) reason = 'Eligible subtotal is below the minimum';
     else {
-      discountCents = Math.min(Math.floor((eligibleSubtotalCents * policy.percentOff + 50) / 100), policy.maximumDiscountCents, eligibleSubtotalCents);
+      discountCents = calculateDiscountCents(eligibleSubtotalCents, policy.percentOff, policy.maximumDiscountCents);
       reason = discountCents > 0 ? 'Promotion applied' : 'No eligible items';
     }
   }

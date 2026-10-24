@@ -1,0 +1,33 @@
+{
+  "test_id": "b5e1778f-6880-438a-91b9-ebdbb1a165f3",
+  "project_id": "01M5QMFX6A3MX0GAMMTVB8H1GJ",
+  "folder_id": "01M5QMFXFJYWED4JBDWECMH0RG",
+  "org_id": "3394485",
+  "session_name": "below-threshold-sale-cart-gets-no-preview-discount",
+  "commit_id": "71a87ff9-1b4b-4838-ab67-7ea4a7f5b328",
+  "testcase_id": "01M5QNQVQN2CJW73R1H7A9ESVZ",
+  "executions": [
+    {
+      "execution_id": "2935cbb6-65ef-475c-9dd6-e20d4e9dc429",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-24T19:22:14.705Z"
+    },
+    {
+      "execution_id": "740f168d-c9f3-4758-a655-25aa6faef70e",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "uploaded": false,
+      "at": "2026-10-24T19:27:58.919Z"
+    },
+    {
+      "execution_id": "a62515b9-21d7-4bb2-9cda-383af2b89725",
+      "run_kind": "replay",
+      "status": "passed",
+      "at": "2026-10-24T19:33:55.804Z",
+      "uploaded": true
+    }
+  ]
+}

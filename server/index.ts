@@ -1,21 +1,22 @@
 import 'dotenv/config';
 import express from 'express';
 import path from 'node:path';
+import { existsSync } from 'node:fs';
 import OpenAI from 'openai';
 import { z } from 'zod';
 import { catalog, policySchema, quote } from '../shared/promotion.js';
-import { active, canActivate, candidate, confirm, readState, readSuite, writeState } from './state.js';
+import { active, canActivate, candidate, confirm, readState, readSuite, suiteMatchesCandidate, writeState } from './state.js';
 import { isRunning, launchVerification } from './kane.js';
 
 const app = express();
 app.use(express.json({ limit: '32kb' }));
-const respondError = (res: express.Response, error: unknown, status = 400) => res.status(status).json({ error: error instanceof Error ? error.message : 'Request failed' });
+const respondError = (res: express.Response, error: unknown, status = 400) => res.status(status).json({ error: error instanceof z.ZodError ? error.issues.map(issue => `${issue.path.join('.') || 'Input'}: ${issue.message}`).join('; ') : error instanceof Error ? error.message : 'Request failed' });
 
 app.get('/api/state', (_req, res) => {
   try {
     const state = readState();
     let suiteReady = false;
-    try { suiteReady = Boolean(readSuite()); } catch { /* invalid suite is never ready */ }
+    try { const suite = readSuite(); const current = candidate(state); suiteReady = Boolean(suite && current && suiteMatchesCandidate(current, suite.suite)); } catch { /* invalid suite is never ready */ }
     res.json({ candidate: candidate(state), active: active(state), verification: state.verification, activation: canActivate(state), suiteReady, running: isRunning(), catalog, openaiReady: Boolean(process.env.OPENAI_API_KEY) });
   } catch (error) { respondError(res, error, 500); }
 });
@@ -71,6 +72,11 @@ app.post('/api/activate', (_req, res) => {
     writeState(state);
     res.json({ active: active(state) });
   } catch (error) { respondError(res, error, 500); }
+});
+app.get('/api/evidence', (_req, res) => {
+  const pack = readState().verification?.evidencePack;
+  if (!pack || !pack.startsWith(path.resolve('requirements/.testmuai/evidence') + path.sep) || !existsSync(pack)) return respondError(res, new Error('No Kane evidence pack is available'), 404);
+  res.download(pack);
 });
 
 const port = Number(process.env.PORT || 4173);

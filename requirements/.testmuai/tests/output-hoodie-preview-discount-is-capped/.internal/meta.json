@@ -1,0 +1,25 @@
+{
+  "test_id": "28f90f8d-eb89-48dc-a888-d9b47ea41d0e",
+  "project_id": "01M5QMFX6A3MX0GAMMTVB8H1GJ",
+  "folder_id": "01M5QMFXFJYWED4JBDWECMH0RG",
+  "org_id": "3394485",
+  "session_name": "hoodie-preview-discount-is-capped",
+  "commit_id": "c5947cb1-f801-4914-a1d0-b6a35e249b08",
+  "testcase_id": "01M5QP7WE8P1BMDTKTJ0BW7QYN",
+  "executions": [
+    {
+      "execution_id": "a9b9c45a-9f55-4e2c-9f93-089fbe426e36",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-24T19:30:44.247Z"
+    },
+    {
+      "execution_id": "a62515b9-21d7-4bb2-9cda-383af2b89725",
+      "run_kind": "author",
+      "status": "passed",
+      "at": "2026-10-24T19:33:55.816Z",
+      "uploaded": true
+    }
+  ]
+}

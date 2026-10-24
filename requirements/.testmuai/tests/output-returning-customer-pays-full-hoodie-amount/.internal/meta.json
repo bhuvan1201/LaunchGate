@@ -1,0 +1,25 @@
+{
+  "test_id": "8762fcae-f014-4d01-9081-b9defbb3a3b7",
+  "project_id": "01M5QMFX6A3MX0GAMMTVB8H1GJ",
+  "folder_id": "01M5QMFXFJYWED4JBDWECMH0RG",
+  "org_id": "3394485",
+  "session_name": "returning-customer-pays-full-hoodie-amount",
+  "commit_id": "4eee8c87-50c9-4240-b90c-af8436279495",
+  "testcase_id": "01M5QPA2VM54TEX2C7T8WVJDW2",
+  "executions": [
+    {
+      "execution_id": "28c1b33e-6d1c-4168-9d6b-983897199573",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-24T19:32:02.832Z"
+    },
+    {
+      "execution_id": "a62515b9-21d7-4bb2-9cda-383af2b89725",
+      "run_kind": "author",
+      "status": "passed",
+      "at": "2026-10-24T19:33:55.819Z",
+      "uploaded": true
+    }
+  ]
+}

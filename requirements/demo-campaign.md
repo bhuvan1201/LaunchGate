@@ -1,0 +1,9 @@
+# LaunchGate demo campaign — candidate checkout contract
+
+This requirement describes the fixed promotion used for the hackathon demonstration. Before verification, the merchant must confirm a candidate with these exact structured fields: title "Welcome 20", 20 percent off, minimum eligible subtotal $42.00 inclusive, maximum discount $10.00, new customers only, and sale items excluded. The browser verification flow observes the confirmed candidate without editing or reconfirming it. It may change only the cart and the demo customer selector; it must never click LaunchGate's own verification or activation controls.
+
+All money is USD cents. Canvas Tote is $24.00, Ceramic Mug is $18.00, Weekend Hoodie is $58.00, and Sale Cap is $15.00 and marked on sale. The eligible subtotal includes only items not marked on sale. Calculate 20 percent once on that eligible subtotal, round half up to cents, cap at $10.00 and at the eligible subtotal, then subtract from the full merchandise subtotal. The discount requires a new customer and at least $42.00 in eligible merchandise.
+
+For review of the expected behavior: a new customer with one Tote and one Mug has $42.00 eligible, receives $8.40 off, and owes $33.60. A new customer with one Tote and one Sale Cap has $24.00 eligible, receives no discount, and owes $39.00. A returning customer with one Hoodie owes $58.00 with no discount. A new customer with a Tote, Mug, and Sale Cap has $42.00 eligible, receives $8.40 off, and owes $48.60. A new customer with one Hoodie receives the $10.00 cap and owes $48.00. An empty cart owes $0.00 and never receives a negative total.
+
+An eligible subtotal exactly equal to $42.00 qualifies. A previously recorded run for a different candidate, changed source, or changed required suite cannot authorize this candidate's activation. The active store remains separate from candidate preview until activation.

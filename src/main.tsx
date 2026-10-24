@@ -4,7 +4,7 @@ import { catalog, money, type Policy } from '../shared/promotion';
 import './style.css';
 
 type Revision = { id: number; sourceText: string; policy: Policy; confirmedAt: string };
-type Snapshot = { candidate: Revision | null; active: Revision | null; verification: { status: string; summary?: string; revisionId: number; executionId?: string; evidenceLogs: string[]; completedAt?: string } | null; activation: { ok: boolean; reason: string }; suiteReady: boolean; running: boolean; openaiReady: boolean };
+type Snapshot = { candidate: Revision | null; active: Revision | null; verification: { status: string; summary?: string; revisionId: number; executionId?: string; evidencePack?: string; evidenceLogs: string[]; checks?: { name: string; status: string; failure?: string }[]; completedAt?: string } | null; activation: { ok: boolean; reason: string }; suiteReady: boolean; running: boolean; openaiReady: boolean };
 type Quote = { subtotalCents: number; eligibleSubtotalCents: number; discountCents: number; totalCents: number; reason: string };
 const startingPolicy: Policy = { title: 'Welcome offer', percentOff: 20, minimumEligibleCents: 4200, maximumDiscountCents: 1000, newCustomersOnly: true, excludeSaleItems: true };
 const sample = 'Give new customers 20% off when eligible merchandise reaches $42, cap the discount at $10, and exclude sale items.';
@@ -25,7 +25,7 @@ function App() {
   const [notice, setNotice] = useState('');
   const [error, setError] = useState('');
   const [mode, setMode] = useState<'candidate' | 'active'>('candidate');
-  const [quantities, setQuantities] = useState<Record<string, number>>({ tote: 1, mug: 1, hoodie: 0, cap: 0 });
+  const [quantities, setQuantities] = useState<Record<string, number>>({ tote: 0, mug: 0, hoodie: 0, cap: 0 });
   const [customerType, setCustomerType] = useState<'new' | 'returning'>('new');
   const [checkout, setCheckout] = useState<Quote | null>(null);
 
@@ -74,6 +74,7 @@ function App() {
         </section>
       </div>
       <section className="panel assurance"><div className="section-head"><span className="step">03</span><div><div className="eyebrow">EVIDENCE BEFORE ACTIVATION</div><h2>The launch gate</h2></div><span className="head-tag">KANE CLI</span></div><div className="assurance-grid"><div><div className="assurance-status"><span className={`status-orb ${status === 'passed' ? 'green' : status === 'failed' ? 'red' : ''}`} />{status}</div><p>{snapshot?.verification?.summary || 'A real browser suite must test the confirmed candidate before it can go live.'}</p><div className="verification-meta"><span>Candidate <b>{snapshot?.candidate ? `#${snapshot.candidate.id}` : '—'}</b></span><span>Required suite <b>{snapshot?.suiteReady ? 'Ready' : 'Awaiting reviewed tests'}</b></span><span>Evidence <b>{snapshot?.verification?.evidenceLogs?.length || 0} logs</b></span></div></div><div className="gate-actions"><button className="button button-outline" onClick={verify} disabled={Boolean(busy) || !snapshot?.suiteReady || !snapshot?.candidate || snapshot?.running}>{snapshot?.running ? 'Kane is running…' : '▶ Run Kane verification'}</button><button className="button button-coral" onClick={activate} disabled={Boolean(busy) || !snapshot?.activation.ok || hasDraftChanges}>Activate verified revision →</button><small>{hasDraftChanges ? 'Confirm or discard unsaved edits before activating' : snapshot?.activation.reason}</small></div></div></section>
+      {snapshot?.verification && <section className="report"><div className="report-title"><span>KANE RUN REPORT</span><span>{snapshot.verification.executionId || 'Run in progress'}</span></div><div className="report-list">{snapshot.verification.checks?.length ? snapshot.verification.checks.map(check => <div className="report-check" key={check.name}><span className={check.status === 'passed' ? 'check-pass' : 'check-fail'}>{check.status === 'passed' ? '✓' : '!'}</span><span>{check.name}{check.failure && <small>{check.failure}</small>}</span><b>{check.status}</b></div>) : <p>Individual check results will appear when the run finishes.</p>}</div>{snapshot.verification.evidencePack && <a href="/api/evidence" className="evidence-link">Download the sealed Kane evidence pack ↗</a>}</section>}
       <footer><span>LAUNCHGATE / LOCAL HACK DAY BUILD</span><span>POLICY → CHECKOUT → PROOF → LAUNCH</span></footer>
     </main>
   </div>;

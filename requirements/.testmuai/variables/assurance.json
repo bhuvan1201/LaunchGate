@@ -1,0 +1,12 @@
+{
+  "start_url": {
+    "value": "http://127.0.0.1:4173",
+    "secret": false,
+    "description": "LaunchGate browser entry URL from which the confirmed candidate preview can be opened."
+  },
+  "active_store_url": {
+    "value": "",
+    "secret": false,
+    "description": "Browser entry URL of the active store, separate from the candidate preview."
+  }
+}

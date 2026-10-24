@@ -1,0 +1,25 @@
+{
+  "test_id": "6a3df73f-8341-4cad-a5bb-324512bf0b61",
+  "project_id": "01M5QMFX6A3MX0GAMMTVB8H1GJ",
+  "folder_id": "01M5QMFXFJYWED4JBDWECMH0RG",
+  "org_id": "3394485",
+  "session_name": "sale-cap-does-not-increase-preview-discount",
+  "commit_id": "ef3c1f36-f56d-4730-92d8-2de14712b379",
+  "testcase_id": "01M5QPCEQ2396DR5VRRXVTZDBF",
+  "executions": [
+    {
+      "execution_id": "7bc71ba9-7c87-4921-97fd-d4c44011c07a",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-24T19:33:37.868Z"
+    },
+    {
+      "execution_id": "a62515b9-21d7-4bb2-9cda-383af2b89725",
+      "run_kind": "author",
+      "status": "passed",
+      "at": "2026-10-24T19:33:55.822Z",
+      "uploaded": true
+    }
+  ]
+}

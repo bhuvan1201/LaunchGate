@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node --import tsx server/index.ts",
     "build": "tsc --noEmit && vite build",
-    "test": "node --import tsx --test shared/*.test.ts",
+    "test": "node --import tsx --test shared/*.test.ts server/*.test.ts",
     "start": "NODE_ENV=production node --import tsx server/index.ts"
   },
   "dependencies": {

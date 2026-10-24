@@ -1,0 +1,19 @@
+{
+  "folder": "requirements",
+  "expectedPolicy": {
+    "title": "Welcome 20",
+    "percentOff": 20,
+    "minimumEligibleCents": 4200,
+    "maximumDiscountCents": 1000,
+    "newCustomersOnly": true,
+    "excludeSaleItems": true
+  },
+  "tests": [
+    ".testmuai/tests/confirmed-preview-qualifies-at-exactly-42_test.md",
+    ".testmuai/tests/sale-cap-does-not-increase-preview-discount_test.md",
+    ".testmuai/tests/returning-customer-pays-full-hoodie-amount_test.md",
+    ".testmuai/tests/below-threshold-sale-cart-gets-no-preview-discount_test.md",
+    ".testmuai/tests/hoodie-preview-discount-is-capped_test.md",
+    ".testmuai/tests/empty-preview-cart-never-owes-below-zero_test.md"
+  ]
+}

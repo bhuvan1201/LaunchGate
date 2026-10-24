@@ -1,6 +1,6 @@
 # LaunchGate implementation plan
 
-Status: build in progress. The local app, pricing engine, campaign persistence, OpenAI parse endpoint, Kane runner adapter, and server activation gate are implemented. Kane has ingested the PRD and proposed five use cases; participant review is pending before test design. A live browser test and real OpenAI parse still need to be demonstrated.
+Status: working local MVP. The pricing engine, campaign persistence, real OpenAI interpretation, Kane runner, and backend activation gate are implemented. Kane's PRD use cases and six checkout scenarios were reviewed; the general suite passed four of six. A separate, reviewed read-only candidate suite passed six of six for Welcome 20, and the gate allowed activation only for that exact policy and evidence. See [DEMO_SCRIPT.md](DEMO_SCRIPT.md) for the current run reports, demonstrated repair, and remaining coverage gaps.
 
 ## Outcome
 
@@ -146,4 +146,4 @@ Keep OpenAI interpretation, merchant confirmation, real checkout, genuine Kane e
 
 ## Next deliverable
 
-Review Kane's proposed use cases, design and review the checkout suite, run it in Chrome, then bind its actual evidence to the activation gate. Add a local OpenAI API key in `.env` and prove interpretation end to end. This plan does not itself authorize publishing a site or creating a public deployment.
+Keep the passing demo state stable for the mentor review. Then extend Kane coverage of activation and revision guardrails, demonstrate Maintain on a requirement change if time permits, rehearse the three-minute script, and prepare the submission bundle. The local OpenAI key is present only in ignored `.env`; never copy it into a report or commit. This plan does not itself authorize publishing a site or creating a public deployment.

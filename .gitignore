@@ -7,6 +7,13 @@ dist/
 !.testmuai/tests/
 .testmuai/tests/*
 !.testmuai/tests/*_test.md
+requirements/.testmuai/*
+!requirements/.testmuai/tests/
+requirements/.testmuai/tests/*
+!requirements/.testmuai/tests/*_test.md
+!requirements/.testmuai/variables/
+requirements/.testmuai/variables/*
+!requirements/.testmuai/variables/assurance.json
 data/
 artifacts/runs/
 *.log
