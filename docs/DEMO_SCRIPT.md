@@ -15,5 +15,6 @@ Start from the local app at http://127.0.0.1:4173. The prepared local state is c
 - Final read-only candidate suite: 6/6 passed in 6m 34s, two replayed and four first recordings. Evidence pack: `requirements/.testmuai/evidence/a62515b9-21d7-4bb2-9cda-383af2b89725.evidence`. The app serves it at `/api/evidence`.
 - Activation was exercised after the pass: the active store returned $33.60 for Tote + Mug. Local state was then restored to verified, unactivated candidate #1 for the live demo.
 - The gate rejected a wrong candidate before running Kane. Temporarily changing the suite manifest or requirement source locked activation; restoring the exact files restored eligibility. No real payments, identity checks, or external commerce integration are included.
+- An isolated $48 requirement change went through Kane Maintain; see [MAINTAIN_DEMO.md](MAINTAIN_DEMO.md). It generated new boundary cases but has no passing $48 browser run. Keep this as a short answer to a judging question, not a claim of second verified campaign.
 
 If the browser or network stalls, use the saved Kane reports and evidence pack, then show the deterministic checkout and activation state already prepared locally. Do not claim a live action that was not shown.
