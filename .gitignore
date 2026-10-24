@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.vscode/
+.env
+.context/
+.testmuai/*
+!.testmuai/tests/
+.testmuai/tests/*
+!.testmuai/tests/*_test.md
+data/
+artifacts/runs/
+*.log
+.DS_Store
