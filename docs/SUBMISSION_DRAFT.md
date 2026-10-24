@@ -36,7 +36,7 @@ The isolated run changed the minimum to $48, applied 3 reconciliation rows, gene
 
 ## Demo and source
 
-Repository: https://github.com/bhuvan1201/LaunchGate (remote exists; current commit has not yet been pushed). Run locally with Node 20+, Chrome, `npm install`, a local `.env` containing `OPENAI_API_KEY`, and `npm run dev`; open http://127.0.0.1:4173. A Kane login is needed to rerun the browser suite. See [DEMO_SCRIPT.md](DEMO_SCRIPT.md) for the three-minute flow.
+Repository: https://github.com/bhuvan1201/LaunchGate (`main` is pushed). Run locally with Node 20+, Chrome, `npm install`, a local `.env` containing `OPENAI_API_KEY`, and `npm run dev`; open http://127.0.0.1:4173. A Kane login is needed to rerun the browser suite. See [DEMO_SCRIPT.md](DEMO_SCRIPT.md) for the three-minute flow.
 
 ## Known limitations
 
@@ -44,7 +44,6 @@ This is a local demo store with four fixed products, one supported percentage pr
 
 ## Before submitting
 
-- Push the reviewed commit to the public remote only after the owner approves publication.
-- Replace the commit placeholder in the event form with `git rev-parse HEAD` after the final documentation commit.
+- Put the exact pushed SHA from `git rev-parse HEAD` in the event form.
 - Attach or record the final Kane run in the event hub so judges can open its report. Do not imply the local pack path is a public link.
 - Save the Submit draft, run preflight, and have the team captain finalize it in the browser.
